@@ -23,13 +23,7 @@ default: &default
 
 development:
   <<: *default
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
   database: myapp_development
-  pool: 5
-  username: root
-  password: adminspin123
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -63,13 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
   database: myapp_test
-  pool: 5
-  username: root
-  password: adminspin123
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -92,11 +80,6 @@ test:
 #
 production:
   <<: *default
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
   database: myapp_production
-  username: root
-  password: adminspin123
-  pool: 5
-  
+  username: myapp
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
